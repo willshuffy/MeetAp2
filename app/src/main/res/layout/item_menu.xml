@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:id="@+id/img_view"
+            android:id="@+id/iv_menu"
             android:src="@mipmap/ic_launcher"/>
 
         <TextView
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_name"
             android:text="Soto Betawi"
-            android:layout_toRightOf="@id/img_view"
+            android:layout_toRightOf="@id/iv_menu"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/header_judul"
             android:textStyle="bold"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_price"
             android:text="Rp 5.000"
-            android:layout_toRightOf="@id/img_view"
+            android:layout_toRightOf="@id/iv_menu"
             android:layout_below="@id/tv_name"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/header_judul_dua"
