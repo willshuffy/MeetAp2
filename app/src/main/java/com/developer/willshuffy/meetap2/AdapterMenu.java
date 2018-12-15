@@ -1,6 +1,7 @@
 package com.developer.willshuffy.meetap2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.developer.willshuffy.meetap2.activities.DetailActivity;
 import com.developer.willshuffy.meetap2.models.Menu;
 
 import java.util.ArrayList;
@@ -37,7 +39,7 @@ public class AdapterMenu extends RecyclerView.Adapter<AdapterMenu.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull AdapterMenu.ViewHolder holder, int position) {
-        Menu menu = list.get(holder.getAdapterPosition());
+        final Menu menu = list.get(holder.getAdapterPosition());
         holder.tvPrice.setText(menu.getCost());
         holder.tvName.setText(menu.getName());
 
@@ -49,6 +51,16 @@ public class AdapterMenu extends RecyclerView.Adapter<AdapterMenu.ViewHolder> {
                 .skipMemoryCache(true)
                 .dontAnimate()
                 .into(holder.ivMenu);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("key_menu", menu);
+                context.startActivity(intent);
+
+            }
+        });
 
     }
 

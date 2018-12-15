@@ -5,4 +5,6 @@
     <string name="toast_onDevelopment">test toast !</string>
     <string name="pleace_wait_onprocess">Pleace Wait On Process !</string>
     <string name="please_wait">Please Wait !</string>
+    <string name="detail_name">Nama Makanan</string>
+    <string name="harga_barang">Harga Barang</string>
 </resources>
