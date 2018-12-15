@@ -9,32 +9,46 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.developer.willshuffy.meetap2.models.Menu;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterMenu extends RecyclerView.Adapter<AdapterMenu.ViewHolder> {
 
     Context context;
-    private List<Result> list;
+    private List<Menu> list;
 
-    public AdapterMenu(Context context, List<Result>list){
+    public AdapterMenu(Context context){
         this.context=context;
-        this.list=list;
+        list = new ArrayList<>();
     }
 
     @NonNull
     @Override
     public AdapterMenu.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu,parent, false);
-        final  AdapterMenu.ViewHolder holder=new ViewHolder(v);
+        final  AdapterMenu.ViewHolder holder=new AdapterMenu.ViewHolder(v);
 
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull AdapterMenu.ViewHolder holder, int position) {
-        Result result= list.get(holder.getAdapterPosition());
-        holder.tvPrice.setText(result.getTitle());
-        holder.tvName.setText(result.getRelease_date());
+        Menu menu = list.get(holder.getAdapterPosition());
+        holder.tvPrice.setText(menu.getCost());
+        holder.tvName.setText(menu.getName());
+
+        Glide.with(context)
+                .load(menu.getImage())
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .dontAnimate()
+                .into(holder.ivMenu);
 
     }
 
@@ -43,7 +57,52 @@ public class AdapterMenu extends RecyclerView.Adapter<AdapterMenu.ViewHolder> {
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public void add(Menu r) {
+        list.add(r);
+        notifyItemInserted(list.size() - 1);
+    }
+
+    public void addAll(List<Menu> moveResults) {
+        for (Menu result : moveResults) {
+            add(result);
+        }
+    }
+
+    public void remove(Menu r) {
+        int position = list.indexOf(r);
+        if (position > -1) {
+            list.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+
+    public void clear() {
+        while (getItemCount() > 0) {
+            remove(getItem(0));
+        }
+    }
+
+    public void clearAll() {
+        if (!list.isEmpty()){
+            list.clear();
+            notifyDataSetChanged();
+        }
+    }
+
+    public boolean isEmpty() {
+        return getItemCount() == 0;
+    }
+
+    public Menu getItem(int position) {
+        if (list !=null){
+            return list.get(position);
+        }
+        return null;
+
+    }
+
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView ivMenu;
         public TextView tvName;
         public TextView tvPrice;

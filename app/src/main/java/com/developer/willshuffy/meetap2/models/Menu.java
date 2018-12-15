@@ -1,8 +1,7 @@
-package com.developer.willshuffy.meetap2;
+package com.developer.willshuffy.meetap2.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 
 public class Menu implements Parcelable
 {
