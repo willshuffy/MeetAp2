@@ -25,6 +25,12 @@
         android:layout_height="wrap_content"
         android:text="@string/all_order"/>
 
+    <Button
+        android:id="@+id/btn_input_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/input_menu"/>
+
 
 
 </LinearLayout>

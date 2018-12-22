@@ -7,4 +7,12 @@
     <string name="please_wait">Please Wait !</string>
     <string name="detail_name">Nama Makanan</string>
     <string name="harga_barang">Harga Barang</string>
+    <string name="load_from_uri">Load From Uri</string>
+    <string name="convert_uri_to_file">Convert Uri to File</string>
+    <string name="convert_uri_to_bitmap">Convert Uri to Bitmap</string>
+    <string name="btn_save">save</string>
+    <string name="tv_price">Price</string>
+    <string name="tv_description">Description</string>
+    <string name="tv_name">Name</string>
+    <string name="input_menu">input menu</string>
 </resources>
